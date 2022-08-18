@@ -12,10 +12,14 @@ console.log('refs', refs);
 refs.form.addEventListener('submit', onClickCreatePromises);
 // refs.btnSubmit.addEventListener('click', onClickCreatePromises);
 
-function onClickCreatePromises() {
-  const delay = Number(refs.delay.value);
-  const step = Number(refs.step.value);
-  const amount = Number(refs.amount.value);
+function onClickCreatePromises(e) {
+  e.preventDefault();
+  // const {
+  //   elements: { delay, step, amount },
+  // } = +e.currentTarget.value;
+  const delay = +e.currentTarget.elements.delay.value;
+  const step = +e.currentTarget.elements.value;
+  const amount = +e.currentTarget.elements.value;
 
   for (let i = 0; i <= amount; i += 1) {
     const totalDelay = delay + step * i;
@@ -31,7 +35,7 @@ function onClickCreatePromises() {
         console.log(`❌ Rejected promise ${position} in ${delay}ms`);
       });
   }
-  reset();
+  e.currentTarget.reset();
 }
 
 function createPromise(position, delay) {
