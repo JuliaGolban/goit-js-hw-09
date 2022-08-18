@@ -16,13 +16,13 @@ function onClickCreatePromises(e) {
   e.preventDefault();
   // const {
   //   elements: { delay, step, amount },
-  // } = +e.currentTarget.value;
-  const delay = +e.currentTarget.elements.delay.value;
-  const step = +e.currentTarget.elements.value;
-  const amount = +e.currentTarget.elements.value;
+  // } = e.currentTarget.elements.value;
+  const delay = Number(e.currentTarget.elements.delay.value);
+  const step = Number(e.currentTarget.elements.step.value);
+  const amount = Number(e.currentTarget.elements.amount.value);
 
-  for (let i = 0; i <= amount; i += 1) {
-    const totalDelay = delay + step * i;
+  for (let i = 1; i <= amount; i += 1) {
+    let totalDelay = delay + step * (i - 1);
     console.log(totalDelay);
 
     createPromise(i, totalDelay)
